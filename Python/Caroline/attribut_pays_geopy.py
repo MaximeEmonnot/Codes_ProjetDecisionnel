@@ -8,12 +8,12 @@ Created on Mon Oct 23 21:28:20 2023
 from geopy.geocoders import Nominatim
 import csv
 from time import sleep
+from concurrent.futures import ThreadPoolExecutor
 
 # Fonction pour obtenir le nom du pays à partir des coordonnées
 def get_country_name(lat, lon):
-    geolocator = Nominatim(user_agent="country_locator")
+    geolocator = Nominatim(user_agent="country_locator", timeout=60)
     location = geolocator.reverse(f"{lat}, {lon}")
-    print (location)
     return(location)
     # if location.raw.get('address'):
     #     country = location.raw['address'].get('country')
@@ -23,9 +23,29 @@ def get_country_name(lat, lon):
     #     else :
     #         return 'Pays non trouvé'
 
+def process_line(l):
+    try: 
+        latitude = float(l['latitude'])
+        longitude = float(l['longitude'])
+        # country_name = get_country_name(latitude, longitude)
+            
+        # Ajoutez le nom du pays à la ligne actuelle
+        l['Pays'] = get_country_name(latitude, longitude)
+        #sleep(0.05)
+        #break
+            
+        # Écrivez la ligne mise à jour dans le fichier de sortie
+        #csv.writerow(l)
+    except :
+        pass
+    return l
+
 # # Lisez le fichier CSV contenant les coordonnées
-with open('Earthquakes_fusion.csv', encoding='utf-8', mode='r') as csvfile:
+with open('partie_10.csv', encoding='utf-8', mode='r') as csvfile:
     csvreader = csv.DictReader(csvfile, delimiter='|')
+    
+    # with ThreadPoolExecutor(max_workers = 1000) as threads:
+    #    t_res = threads.map(process_line, csvreader)
     #csvreader = csv.reader(csvfile, delimiter=';')
     # Créez un fichier de sortie CSV pour écrire les résultats
     with open('resultats.csv',encoding='utf-8', mode='w', newline='') as resultfile:
@@ -35,19 +55,7 @@ with open('Earthquakes_fusion.csv', encoding='utf-8', mode='r') as csvfile:
         csvwriter.writeheader()
 
         for row in csvreader:
-            try: 
-                latitude = float(row['latitude'])
-                print (latitude)
-                longitude = float(row['longitude'])
-                print(longitude)
-                country_name = get_country_name(latitude, longitude)
-            
-            # Ajoutez le nom du pays à la ligne actuelle
-                row['Pays'] = country_name
-            #sleep(0.05)
-            #break
-            
-            # Écrivez la ligne mise à jour dans le fichier de sortie
-                csvwriter.writerow(row)
-            except :
-                pass
+            print(row)
+            csvwriter.writerow(process_line(row))
+          
+

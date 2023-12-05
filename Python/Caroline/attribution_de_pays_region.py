@@ -9,11 +9,15 @@ import pandas as pd
 from geopy.geocoders import Nominatim
 import csv
 
-def get_country_name(lat, lon):
+currentLine=0
+
+def get_country_name(lat, lon, row):
     geolocator = Nominatim(user_agent="country_locator")
     location = geolocator.reverse(f"{lat}, {lon}")
-    #print(location)
+    if row % 10000 == 0 :
+        print(row)
     return location
+
 def supprimer_derniere_virgule(chaine):
     # Diviser la chaîne en fonction des virgules
     parties = chaine.split(',')
@@ -48,9 +52,11 @@ df['longitude'] = pd.to_numeric(df['longitude'], errors='coerce')
 df2=df.dropna(subset=['latitude','longitude'])
 #diff = df.compare(df2, keep_equal=True, keep_shape = True)
 
+print(df2)
+
 #print(diff)
 
-df2['Pays'] = df2.apply(lambda row: get_country_name(float(row['latitude']), float(row['longitude'])), axis=1)
+df2['Pays'] = df2.apply(lambda row: get_country_name(float(row['latitude']), float(row['longitude']), int(row.name)), axis=1)
 
 pays = df2['Pays'] 
 
