@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 nom_fichier_csv = "EarthquakesTimeSeriesAnalysis_Final.csv"
 df = pd.read_csv(nom_fichier_csv, delimiter="|")
 
-colonnes_choisies = ["year", "depth", "magnitude"]
+colonnes_choisies = ["depth", "magnitude"]
 
 for colonne in colonnes_choisies:
     plt.figure()
@@ -34,24 +34,6 @@ plt.xticks(bornes)
 for i in range(len(bornes) - 1):
     intervalle = f'{bornes[i]} - {bornes[i + 1]}'
     valeurs_bin = df[(df['depth'] >= bornes[i]) & (df['depth'] < bornes[i + 1])]['depth'].unique()
-    nb_valeurs_distinctes = len(valeurs_bin)
-    print(f'Dans l\'intervalle {intervalle}, il y a {nb_valeurs_distinctes} valeurs distinctes.')
-
-plt.show()
-
-#------------------------
-
-bornes=[2000, 2005, 2010, 2015, 2020, 2025]
-plt.figure()
-plt.hist(df['year'], bins=bornes, edgecolor='k')
-plt.title('Histogramme de la colonne year')
-plt.xlabel('year')
-plt.ylabel('Effectif')
-plt.xticks(bornes)
-
-for i in range(len(bornes) - 1):
-    intervalle = f'{bornes[i]} - {bornes[i + 1]}'
-    valeurs_bin = df[(df['year'] >= bornes[i]) & (df['year'] < bornes[i + 1])]['year'].unique()
     nb_valeurs_distinctes = len(valeurs_bin)
     print(f'Dans l\'intervalle {intervalle}, il y a {nb_valeurs_distinctes} valeurs distinctes.')
 
@@ -82,7 +64,7 @@ import matplotlib.pyplot as plt
 nom_fichier_csv = "USGS_Final_suppNeg.csv"
 df = pd.read_csv(nom_fichier_csv, delimiter="|")
 
-colonnes_choisies = ["year", "nst", "dmin", "rms", "gap", "mag"]
+colonnes_choisies = ["nst", "dmin", "rms", "gap", "mag"]
 
 for colonne in colonnes_choisies:
     plt.figure()
@@ -91,24 +73,6 @@ for colonne in colonnes_choisies:
     plt.xlabel(colonne)
     plt.ylabel('Effectif')
     plt.show()
-
-#-----------------
-
-bornes=[1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025]
-plt.figure()
-plt.hist(df['year'], bins=bornes, edgecolor='k')
-plt.title('Histogramme de la colonne year')
-plt.xlabel('year')
-plt.ylabel('Effectif')
-plt.xticks(bornes)
-
-for i in range(len(bornes) - 1):
-    intervalle = f'{bornes[i]} - {bornes[i + 1]}'
-    valeurs_bin = df[(df['year'] >= bornes[i]) & (df['year'] < bornes[i + 1])]['year'].unique()
-    nb_valeurs_distinctes = len(valeurs_bin)
-    print(f'Dans l\'intervalle {intervalle}, il y a {nb_valeurs_distinctes} valeurs distinctes.')
-
-plt.show()
 
 #-----------------
 
@@ -205,7 +169,7 @@ plt.show()
 nom_fichier_csv = "Worldwide-Earthquake_Final.csv"
 df = pd.read_csv(nom_fichier_csv, delimiter="|")
 
-colonnes_choisies = ["YEAR", "FOCAL_DEPTH", "MAGNITUDE", "INTENSITY", "DEATHS", "MISSING", "INJURIES", "DAMAGE_MILLIONS_DOLLARS", "HOUSES_DESTROYED", "HOUSES_DAMAGED"]
+colonnes_choisies = ["FOCAL_DEPTH", "MAGNITUDE", "INTENSITY", "DEATHS", "MISSING", "INJURIES", "DAMAGE_MILLIONS_DOLLARS", "HOUSES_DESTROYED", "HOUSES_DAMAGED"]
 
 for colonne in colonnes_choisies:
     plt.figure()
@@ -216,24 +180,6 @@ for colonne in colonnes_choisies:
     plt.show()
 
 #------------------
-
-bornes=[-2150, 0, 1000, 1800, 2000, 2025]
-plt.figure()
-plt.hist(df['YEAR'], bins=bornes, edgecolor='k')
-plt.title('Histogramme de la colonne YEAR')
-plt.xlabel('YEAR')
-plt.ylabel('Effectif')
-plt.xticks(bornes)
-
-for i in range(len(bornes) - 1):
-    intervalle = f'{bornes[i]} - {bornes[i + 1]}'
-    valeurs_bin = df[(df['YEAR'] >= bornes[i]) & (df['YEAR'] < bornes[i + 1])]['YEAR'].unique()
-    nb_valeurs_distinctes = len(valeurs_bin)
-    print(f'Dans l\'intervalle {intervalle}, il y a {nb_valeurs_distinctes} valeurs distinctes.')
-
-plt.show()
-
-#-----------------
 
 bornes=[0, 10, 50, 410, 700]
 plt.figure()
@@ -385,7 +331,7 @@ import matplotlib.pyplot as plt
 nom_fichier_csv = "Temperature.csv"
 df = pd.read_csv(nom_fichier_csv, delimiter="|")
 
-colonnes_choisies = ["Year", "AvgTemperature"]
+colonnes_choisies = ["AvgTemperature"]
 
 for colonne in colonnes_choisies:
     plt.figure()
@@ -394,24 +340,6 @@ for colonne in colonnes_choisies:
     plt.xlabel(colonne)
     plt.ylabel('Effectif')
     plt.show()
-
-#-----------------
-
-bornes=[1995, 2000, 2005, 2010, 2015, 2020, 2025]
-plt.figure()
-plt.hist(df['Year'], bins=bornes, edgecolor='k')
-plt.title('Histogramme de la colonne Year')
-plt.xlabel('Year')
-plt.ylabel('Effectif')
-plt.xticks(bornes)
-
-for i in range(len(bornes) - 1):
-    intervalle = f'{bornes[i]} - {bornes[i + 1]}'
-    valeurs_bin = df[(df['Year'] >= bornes[i]) & (df['Year'] < bornes[i + 1])]['Year'].unique()
-    nb_valeurs_distinctes = len(valeurs_bin)
-    print(f'Dans l\'intervalle {intervalle}, il y a {nb_valeurs_distinctes} valeurs distinctes.')
-
-plt.show()
 
 #----------------
 
@@ -439,7 +367,7 @@ import matplotlib.pyplot as plt
 nom_fichier_csv = "CO2_Emissions.csv"
 df = pd.read_csv(nom_fichier_csv, delimiter="|")
 
-colonnes_choisies = ["year", "value"]
+colonnes_choisies = ["value"]
 
 for colonne in colonnes_choisies:
     plt.figure()
@@ -450,24 +378,6 @@ for colonne in colonnes_choisies:
     plt.show()
 
 #-----------------
-
-bornes=[1960, 1965, 1970, 1975, 1980,1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020]
-plt.figure()
-plt.hist(df['year'], bins=bornes, edgecolor='k')
-plt.title('Histogramme de la colonne year')
-plt.xlabel('year')
-plt.ylabel('Effectif')
-plt.xticks(bornes)
-
-for i in range(len(bornes) - 1):
-    intervalle = f'{bornes[i]} - {bornes[i + 1]}'
-    valeurs_bin = df[(df['year'] >= bornes[i]) & (df['year'] < bornes[i + 1])]['year'].unique()
-    nb_valeurs_distinctes = len(valeurs_bin)
-    print(f'Dans l\'intervalle {intervalle}, il y a {nb_valeurs_distinctes} valeurs distinctes.')
-
-plt.show()
-
-#--------------
 
 bornes=[0,500000, 1000000, 2000000, 3000000, 4000000, 5000000, 10000000, 20000000, 35000000]
 plt.figure()
@@ -489,7 +399,7 @@ plt.show()
 nom_fichier_csv = "PopulationDensity.csv"
 df = pd.read_csv(nom_fichier_csv, delimiter=";")
 
-colonnes_choisies = ["Year","PopulationDensity"]
+colonnes_choisies = ["PopulationDensity"]
 
 for colonne in colonnes_choisies:
     plt.figure()
@@ -499,22 +409,6 @@ for colonne in colonnes_choisies:
     plt.ylabel('Effectif')
     plt.show()
     
-bornes=[1960, 1965, 1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025]
-plt.figure()
-plt.hist(df['Year'], bins=bornes, edgecolor='k')  
-plt.title('Histogramme de la colonne Year')
-plt.xlabel('Year')
-plt.ylabel('Effectif')
-plt.xticks(bornes)
-
-for i in range(len(bornes) - 1):
-    intervalle = f'{bornes[i]} - {bornes[i + 1]}'
-    valeurs_bin = df[(df['Year'] >= bornes[i]) & (df['Year'] < bornes[i + 1])]['Year'].unique()
-    nb_valeurs_distinctes = len(valeurs_bin)
-    print(f'Dans l\'intervalle {intervalle}, il y a {nb_valeurs_distinctes} valeurs distinctes.')
-
-plt.show()
-
 #------------------------
 
 bornes=[0, 100, 200, 300, 500, 1000, 5000, 20000]
@@ -537,7 +431,7 @@ plt.show()
 nom_fichier_csv = "Poverty.csv"
 df = pd.read_csv(nom_fichier_csv, delimiter=";")
 
-colonnes_choisies = ["Year","Poverty"]
+colonnes_choisies = ["Poverty"]
 
 for colonne in colonnes_choisies:
     plt.figure()
@@ -547,22 +441,6 @@ for colonne in colonnes_choisies:
     plt.ylabel('Effectif')
     plt.show()
     
-bornes=[1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025]
-plt.figure()
-plt.hist(df['Year'], bins=bornes, edgecolor='k')  
-plt.title('Histogramme de la colonne Year')
-plt.xlabel('Year')
-plt.ylabel('Effectif')
-plt.xticks(bornes)
-
-for i in range(len(bornes) - 1):
-    intervalle = f'{bornes[i]} - {bornes[i + 1]}'
-    valeurs_bin = df[(df['Year'] >= bornes[i]) & (df['Year'] < bornes[i + 1])]['Year'].unique()
-    nb_valeurs_distinctes = len(valeurs_bin)
-    print(f'Dans l\'intervalle {intervalle}, il y a {nb_valeurs_distinctes} valeurs distinctes.')
-
-plt.show()
-
 #------------------------
 
 bornes=[0,2, 5, 10, 20, 35,60]
@@ -582,10 +460,10 @@ for i in range(len(bornes) - 1):
 plt.show()
 
 #------------------------------------
-nom_fichier_csv = "sealevel.csv"
-df = pd.read_csv(nom_fichier_csv, delimiter=";")
+nom_fichier_csv = "avg_sealevel.csv"
+df = pd.read_csv(nom_fichier_csv, delimiter="|")
 
-colonnes_choisies = ["Year","GMSL_noGIA"]
+colonnes_choisies = ["sealevel_rise"]
 
 for colonne in colonnes_choisies:
     plt.figure()
@@ -595,35 +473,17 @@ for colonne in colonnes_choisies:
     plt.ylabel('Effectif')
     plt.show()
     
-bornes=[1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025]
+bornes=[-35, -20, 0, 15, 35, 51]
 plt.figure()
-plt.hist(df['Year'], bins=bornes, edgecolor='k')  
-plt.title('Histogramme de la colonne Year')
-plt.xlabel('Year')
+plt.hist(df['sealevel_rise'], bins=bornes, edgecolor='k')  
+plt.title('Histogramme de la colonne sealevel_rise')
+plt.xlabel('sealevel_rise')
 plt.ylabel('Effectif')
 plt.xticks(bornes)
 
 for i in range(len(bornes) - 1):
     intervalle = f'{bornes[i]} - {bornes[i + 1]}'
-    valeurs_bin = df[(df['Year'] >= bornes[i]) & (df['Year'] < bornes[i + 1])]['Year'].unique()
-    nb_valeurs_distinctes = len(valeurs_bin)
-    print(f'Dans l\'intervalle {intervalle}, il y a {nb_valeurs_distinctes} valeurs distinctes.')
-
-plt.show()
-
-#------------------------
-
-bornes=[-45, -30,0, 25, 60]
-plt.figure()
-plt.hist(df['GMSL_noGIA'], bins=bornes, edgecolor='k')
-plt.title('Histogramme de la colonne GMSL_noGIA')
-plt.xlabel('GMSL_noGIA')
-plt.ylabel('Effectif')
-plt.xticks(bornes)
-
-for i in range(len(bornes) - 1):
-    intervalle = f'{bornes[i]} - {bornes[i + 1]}'
-    valeurs_bin = df[(df['GMSL_noGIA'] >= bornes[i]) & (df['GMSL_noGIA'] < bornes[i + 1])]['GMSL_noGIA'].unique()
+    valeurs_bin = df[(df['sealevel_rise'] >= bornes[i]) & (df['sealevel_rise'] < bornes[i + 1])]['sealevel_rise'].unique()
     nb_valeurs_distinctes = len(valeurs_bin)
     print(f'Dans l\'intervalle {intervalle}, il y a {nb_valeurs_distinctes} valeurs distinctes.')
 
